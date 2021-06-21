@@ -1,0 +1,225 @@
+{% load static %}
+{% load crispy_forms_tags%}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'home/css/formstyle.css'%}" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <link href="{% static 'home/css/all.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}"  crossorigin="anonymous">
+     <style>
+
+body{
+    font-family: 'Poppins', sans-serif;
+    /* overflow: hidden; */
+}
+       .bg-light {
+       background-color: #bfebd1 !important;; 
+       }
+       .alert-primary {
+    color: #004085;
+    background-color: #cfd2d526;
+    border-color: #e6e7e9;
+}
+.navbar-light .navbar-toggler {
+  float: right;
+    color: rgba(0,0,0,.5);
+    border-color: rgba(0,0,0,.1);
+}
+.navbar-toggler:focus, .navbar-toggler:hover {
+    text-decoration: none;
+}
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    cursor: pointer;
+}
+.fa,
+.fas,
+.far,
+.fal,
+.fad,
+.fab {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1; }
+.fa-heart:before {
+  content: "\f004"; }
+.wavet{
+  position: fixed;
+  top:0;
+  float:right;
+  right: 0;
+  z-index: 1000;
+}
+@media screen and (max-width: 900px){
+
+
+	.wavet{
+		display: none;
+	}
+
+	
+}
+a{
+  color:#bfebd1;
+}
+a:hover{
+  color:#e6e7e9;
+}
+/* $form-floating-height:            add(3.5rem, $input-height-border);
+$form-floating-padding-x:         $input-padding-x;
+$form-floating-padding-y:         1rem;
+$form-floating-input-padding-t:   1.625rem;
+$form-floating-input-padding-b:   .625rem;
+$form-floating-label-opacity:     .65;
+$form-floating-label-transform:   scale(.85) translateY(-.5rem) translateX(.15rem);
+$form-floating-transition:        opacity .1s ease-in-out, transform .1s ease-in-out; */
+     </style>
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <img class="wavet" src="{% static '/images/wavet.png' %}" width="500" height="80" >
+    {% include "pages/navbar.html" %}
+    
+    <div class="container">
+      <form action ="" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <div class="form-row">
+          <div class="form-group col-md-6 mb-0">
+            {{ form.nom|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-6 mb-0">
+            {{ form.prenom|as_crispy_field }}
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6 mb-0">
+            {{form.Email|as_crispy_field}}
+          </div>
+          <div class="form-group col-md-6 mb-0">
+            {{form.Image|as_crispy_field}}
+          </div>
+        </div>
+        {{form.util}}
+        
+         
+         
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        
+      </form>
+    </div>
+         
+    <!-- <h1>Hello, world! SEARCH</h1>
+  <div class="center">
+<form action="" method="POST"  > 
+  <div class="form-contrl-sm center "> 
+ {% csrf_token %}
+ <div class="row">
+   
+ </div>
+ <div class="form-floating mb-3">
+  <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+  <label for="floatingInput">Email address</label>
+</div>
+<div class="form-floating">
+  <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+  <label for="floatingPassword">Password</label>
+</div> 
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+  </div>
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+      <form>
+         
+           Username 
+          <div class="row">
+              <div class="col-md-12">
+                  <label class="floating-label">prenom</label>
+                  {{form.prenom}} </div>
+          </div>
+           Password 
+          <div class="row">
+              <div class="col-md-12">
+                  <label class="floating-label label-required">Nom</label>
+                  {{form.nom}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+                <label class="floating-label label-required">Nom</label>
+                {{form.Email}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+              <label class="floating-label label-required">Nom</label>
+              {{form.Telephone}}</div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+            <label class="floating-label label-required">Nom</label>
+            {{form.age}}</div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+          <label class="floating-label label-required">Nom</label>
+          {{form.dateNaissance}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+        <label class="floating-label label-required">Nom</label>
+        {{form.dateNaissance}}</div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+      <label class="floating-label label-required">Nom</label>
+      {{form.dateNaissance}}</div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+      <label class="floating-label label-required">Nom</label>
+      {{form.dateNaissance}}</div>
+</div>
+           Login Button 
+          <div class="row">
+              <div class="col-md-6">
+                  <label><a href="#">Forget Password?</a></label>
+              </div>
+              <div class="col-md-6">
+                  <button class="adam-button">LOGIN</button>
+              </div>
+          </div>
+      </form>
+  </div> -->
+</div>
+<!-- /* Include the jquery Ui here */ -->
+ <script>
+  $(function() {
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "1900:2012",
+      // You can put more options here.
+
+    });
+  });
+  </script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

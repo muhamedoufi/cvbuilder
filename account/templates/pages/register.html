@@ -1,0 +1,82 @@
+<!-- <h1>Register </h1>
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form> -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CvMaker-Seconnecter</title>
+	
+	<link rel="stylesheet" type="text/css" href="{% static 'home/css/style1.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<!-- <img class="logo" src="img/logo.png"> -->
+	<img class="wave" src="{% static '/images/wave.png' %}">
+	<div class="container">
+		<div class="img">
+			<img src="  {% static '/images/Resume-bro.svg' %}">
+		</div>
+		<div class="login-content">
+			<form method="POST" action="">
+                {% csrf_token %}
+				<img src="{% static '/images/avatar.svg'%}">
+				<h2 class="title">Enregistrer </h2>
+           		<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>{{form.username.label}}</h5>
+           		   		 <input type="text" class="input">
+                              {{form.username}}
+           		   </div>
+           		</div>
+                   <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="div">
+                        <h5>{{form.email.label}}</h5>
+                            {{form.email}}
+                    </div>
+                 </div>
+                 <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="div">
+                            <h5>{{form.password1.label}}</h5>
+                            {{form.password1}}
+                    </div>
+                 </div>
+           		<div class="input-div pass">
+           		   <div class="i"> 
+                    <i class="fab fa-sass"></i>
+           		   </div>
+           		   <div class="div">
+           		    	<h5>{{form.password2.label}}</h5>
+           		    	{{form.password2}}
+            	   </div>
+            	</div>
+            	<!-- <a href="#">Forgot Password?</a> -->
+            	<input type="submit" class="btn" value="Login">
+				<a href="{% url 'index' %}">Vous avez une compte? <b>Se connecter</b></a>
+                <br>
+            {{form.errors}}
+            </br>
+            
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
